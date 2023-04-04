@@ -19,7 +19,7 @@ router.post("/dashboard/:id", function (request, response) {
         const mailOptions = {
             from: process.env.EMAIL,
             to: email,
-            subject: `Hey there!  ${remainder} onlyto payment for ${loanType}`,
+            subject: `Hey there!  ${remainder} only to payment for ${loanType}`,
             html: `<h2>hello</h2>
             <p>I hope that you are well.
             I just want to let you know that ${remainder} only left 
