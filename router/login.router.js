@@ -5,7 +5,7 @@ import Jwt from "jsonwebtoken";
 
 const router = express.Router()
 
-async function genhashpassword(password) {
+export async function genhashpassword(password) {
     const no_of_rounds = 10
     const salt = await bcrypt.genSalt(no_of_rounds)
     const hashPassword = await bcrypt.hash(password, salt)
