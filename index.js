@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv'
 import cors from "cors";
 import signinRouter from './router/login.router.js';
 import emailRouter from './router/route.js';
-import { auth } from "../middleware/auth.js";
+import { auth } from "./middleware/auth.js";
 
 
 // import bcrypt   from ' bcrypt'
