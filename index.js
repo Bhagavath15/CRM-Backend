@@ -6,7 +6,7 @@ import * as dotenv from 'dotenv'
 import cors from "cors";
 import signinRouter from './router/login.router.js';
 import emailRouter from './router/route.js';
-import { auth } from "./middleware/auth.js";
+import { auth } from "../middleware/auth.js";
 
 
 // import bcrypt   from ' bcrypt'
@@ -34,7 +34,7 @@ app.get("/", function (request, response) {
 });
 
 
-app.post("/dashboard",  async function (request, response) {
+app.post("/dashboard", async function (request, response) {
     const result = request.body
     const detail = await client
         .db("workspace")
@@ -44,7 +44,7 @@ app.post("/dashboard",  async function (request, response) {
 
 })
 
-app.get("/dashboard",  async function (request, response) {
+app.get("/dashboard", auth, async function (request, response) {
 
     const detail = await client
         .db("workspace")
@@ -55,7 +55,7 @@ app.get("/dashboard",  async function (request, response) {
 
 })
 
-app.get("/dashboard/:id",  async function (request, response) {
+app.get("/dashboard/:id", auth, async function (request, response) {
     const { id } = request.params
     const detail = await client
         .db("workspace")
@@ -64,7 +64,7 @@ app.get("/dashboard/:id",  async function (request, response) {
     detail ? response.send(detail) : response.status(404).send({ message: "Detail is not found" })
 })
 
-app.put("/dashboard/:id",  async function (request, response) {
+app.put("/dashboard/:id", async function (request, response) {
     const { id } = request.params
     const data = request.body
     const detail = await client
@@ -74,7 +74,7 @@ app.put("/dashboard/:id",  async function (request, response) {
     response.send(detail)
 })
 
-app.delete('/dashboard/:id',  async function (request, response) {
+app.delete('/dashboard/:id', async function (request, response) {
     const { id } = request.params
     console.log(id)
 
